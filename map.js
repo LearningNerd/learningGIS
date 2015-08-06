@@ -10,7 +10,7 @@
     
 //L.geoJson(geojsonFeature).addTo(map);
 
-var cities = "lacities.geojson";
+var cities = "newalldatatest.geojson";
         
         //Styles and loads the Hubs
         $.getJSON(cities, function(data) {
