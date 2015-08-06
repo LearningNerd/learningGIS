@@ -35,7 +35,18 @@ L.geoJson(geojsonFeature, {
 }).addTo(map);
 */
 
-    // COLOR BY POPULATION
+ // ADD POPUP TO EACH FEATURE
+function onEachFeature(feature, layer) {
+    if (feature.properties) {
+        layer.bindPopup("CITY NAME: " + feature.properties.CITY_LABEL + ", Portal: " + feature.properties.portal);
+    }
+}
+
+L.geoJson(geojsonFeature, {
+    onEachFeature: onEachFeature
+}).addTo(map);
+
+    // COLOR BY portal
 function getColor(portal) {
     return portal > 0 ? '#800026' :
                       '#0000FF';
