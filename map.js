@@ -35,7 +35,24 @@ L.geoJson(geojsonFeature, {
 }).addTo(map);
 */
 
+    // COLOR BY POPULATION
+function getColor(portal) {
+    return portal > 0 ? '#800026' :
+                      '#0000FF';
+}
+function style(feature) {
+    return {
+        fillColor: getColor(feature.properties.Portal),
+        weight: 2,
+        opacity: 1,
+        color: 'white',
+        dashArray: '3',
+        fillOpacity: 0.7
+    };
+}
+L.geoJson(cities, {style: style}).addTo(map);
 
+/*
 
     // COLOR BY POPULATION
 function getColor(d) {
@@ -60,7 +77,7 @@ function style(feature) {
 }
 L.geoJson(cities, {style: style}).addTo(map);
 
-
+/*
 
 
 /*
