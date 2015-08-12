@@ -1,5 +1,6 @@
-		var map = L.map('map').setView([34.052235, -118.243683], 10);
+	//	var map = L.map('map').setView([34.052235, -118.243683], 10);
 
+/*
 		L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
 			maxZoom: 18,
 			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
@@ -7,23 +8,36 @@
 				'Imagery © <a href="http://mapbox.com">Mapbox</a>',
 			id: 'examples.map-20v6611k'
 		}).addTo(map);
-    
+    */
 //L.geoJson(geojsonFeature).addTo(map);
 
 var cities = "lacities.geojson";
-        
-        //Styles and loads the Hubs
-        $.getJSON(cities, function(data) {
-        var citiesLayer = L.geoJson(data, {
-                style:{
-                fillColor:"#ff7f00",
-                color: "#ff7f00",
-                weight: 1,
-                opacity: 1,
-                fillOpacity: 0.05
-                }               
-        }).addTo(map);
-        });
+
+function popUp(feature, layer) {
+    layer.bindPopup(feature.properties.CITY_LABEL);
+  }
+
+var citiesLayer = new L.GeoJSON.AJAX("lacities.json");
+var citiesLayer = new L.GeoJSON.AJAX("lacities.json", {dataType:"jsonp"});
+
+/*
+style:{
+    fillColor:"#ff7f00",
+    color: "#ff7f00",
+    weight: 1,
+    opacity: 1,
+    fillOpacity: 0.05
+    }   
+*/
+
+  var map = L.map('map').fitBounds(citiesLayer.getBounds());
+
+var cupcakeTiles = L.tileLayer('http://a.tiles.mapbox.com/v3/lyzidiamond.map-ietb6srb/{z}/{x}/{y}.png', {
+    maxZoom: 18
+  });
+cupcakeTiles.addTo(map);
+
+  citiesLayer.addTo(map);
 
 
 /*
@@ -36,6 +50,7 @@ L.geoJson(geojsonFeature, {
 */
 
  // ADD POPUP TO EACH FEATURE
+/*
 function onEachFeature(feature, layer) {
     if (feature.properties) {
         layer.bindPopup("CITY NAME: " + feature.properties.CITY_LABEL + ", Portal: " + feature.properties.portal);
@@ -46,6 +61,7 @@ L.geoJson(geojsonFeature, {
     onEachFeature: onEachFeature
 }).addTo(map);
 
+*/
     // COLOR BY portal
 function getColor(portal) {
     return portal > 0 ? '#800026' :
@@ -61,7 +77,7 @@ function style(feature) {
         fillOpacity: 0.7
     };
 }
-L.geoJson(cities, {style: style}).addTo(map);
+L.geoJson(citiesLayer, {style: style}).addTo(map);
 
 /*
 
