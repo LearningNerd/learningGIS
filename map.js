@@ -42,7 +42,7 @@ function onEachFeature(feature, layer) {
     }
 }
 
-L.geoJson(geojsonFeature, {
+L.geoJson(citiesLayer, {
     onEachFeature: onEachFeature
 }).addTo(map);
 
