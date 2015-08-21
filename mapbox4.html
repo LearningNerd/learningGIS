@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Civic Tech USC | USC Annenberg Center on Communication Leadership &amp; Policy</title>
+<script src='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+<style>
+  body { margin:0; padding:0; }
+  #map { height:400px; max-width:100%; }
+    
+    .map-legend .swatch {
+  width:20px;
+  height:20px;
+  float:left;
+  margin-right:10px;
+        border: 1px solid #ddd;
+  }
+.leaflet-popup-close-button {
+  display: none;
+  }
+.leaflet-popup-content-wrapper {
+  pointer-events: none;
+  }
+    .map-legend ul {
+        padding-left:1em;
+    }
+    .map-legend li {
+     list-style: none;
+        padding-left:0;
+        margin-bottom:5px;
+    }
+ 
+    
+    body, button, input, select, textarea {
+    color: #333;
+    font-family: Bitter, Georgia, serif;
+    font-size: 16px;
+    line-height: 24px;
+}
+    
+    
+    a {
+    color: #990000;
+    text-decoration: none;
+}
+    
+    #usc-branding a {
+     color:#333;   
+    }
+    
+    a:hover {      
+        text-decoration: underline;
+    }
+           
+    h1, h2, h3, h4, h5, h6 {
+        color: #990000;
+    clear: both;    
+    font-family: Helvetica, Arial, sans-serif;
+    letter-spacing: -0.01em;
+}
+     h1 {
+    font-size: 52px;
+    line-height: 64px;         
+    margin-bottom: 24px;      
+}
+    
+    /* LAYOUT ----------------------*/
+    
+    .aboutsection {
+        clear:both; 
+        width:100%;
+        margin-top:4em;
+        padding:2em 0;        
+    }
+    
+    .aboutsection h2 {
+        text-align:center;
+    }
+    
+    .container {
+	margin: 0 auto;
+    max-width: 1100px;        
+    }
+    
+    .signup {
+     float:right;        
+        margin-top:2em;                        
+    }
+    
+    .containercenter {
+     margin: 0 auto;
+    max-width: 800px;             
+    }    
+    
+    /* Sign up form ------------------------*/
+    
+    .signup {     
+  color: #333;
+  text-align: center;   
+    }
+    
+    form {
+  width: 400px;
+  margin: 17% auto;
+}
+
+
+.signup h2 {
+  font-family: 'Lato', sans-serif;
+  color: #333;
+    font-weight:normal;
+    font-size: 35px;
+    line-height: 35px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+
+.description {          
+  margin: -2px 0 45px;
+}
+
+
+.input {
+  display: flex;
+  align-items: center;
+}
+
+
+.button {
+  height: 44px;
+  border: none;
+}
+
+  
+#email {
+  width: 75%;
+  background: #eee;
+  font-family: inherit;
+  color: #737373;
+  letter-spacing: 1px;
+  text-indent: 5%;
+  border-radius: 5px 0 0 5px;
+}
+
+
+#submit {
+  width: 25%;
+  height: 46px;
+  background: #FFCC00;
+  font-family: inherit;
+  font-weight: bold;
+  color: inherit;
+  letter-spacing: 1px;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: background .3s ease-in-out;
+}
+  
+
+#submit:hover {
+  background: #c70d0d;
+}
+  
+
+input:focus {
+  outline: none;
+  outline: 2px solid #FFCC00;
+  box-shadow: 0 0 2px #FFCC00;
+}
+  
+     /* Report
+----------------------------------------------- */
+    
+    .report {
+     float:left;
+        width:500px;    
+        height:500px;                      
+        text-align:center;
+        padding:24px;
+        background:#eee;        
+
+        -webkit-box-shadow: 5px 7px 16px -1px rgba(0,0,0,0.66);
+-moz-box-shadow: 5px 7px 16px -1px rgba(0,0,0,0.66);
+box-shadow: 5px 7px 16px -1px rgba(0,0,0,0.66);
+        
+        position:relative;
+        top:-50px;
+        
+background: rgba(255,255,255,1);
+background: -moz-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(204,207,219,1) 88%, rgba(204,207,219,1) 89%);
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(255,255,255,1)), color-stop(47%, rgba(246,246,246,1)), color-stop(88%, rgba(204,207,219,1)), color-stop(89%, rgba(204,207,219,1)));
+background: -webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(204,207,219,1) 88%, rgba(204,207,219,1) 89%);
+background: -o-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(204,207,219,1) 88%, rgba(204,207,219,1) 89%);
+background: -ms-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(204,207,219,1) 88%, rgba(204,207,219,1) 89%);
+background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(204,207,219,1) 88%, rgba(204,207,219,1) 89%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#cccfdb', GradientType=1 );
+    
+    }
+    
+    .report button {
+   
+        border: 0 none;
+  border-radius: 3px 3px 3px 3px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 25px;        
+  line-height: 25px;
+  margin-bottom: 0;
+  margin-top: 25px;
+  padding: 20px 25px;
+  text-transform: none;
+  transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -webkit-transition: all 0.3s ease 0s;  
+  text-align: center;
+    background: none repeat scroll 0 0 #444444;        
+    }
+    
+    .report button:hover {
+     background: none repeat scroll 0 0 #FFCC00; 
+        color: #333;
+    }
+        
+    
+    /* =USC branding bar
+----------------------------------------------- */
+
+#usc-branding {
+	height:42px;
+    margin-top: 1.5em;
+	margin-bottom: 1.5em;
+}
+
+#usc-branding .container {       /* only being used in #usc-branding, but reuse if needed throughout site */
+	margin: 0 auto;
+    max-width: 1100px;
+}
+
+#usc-branding a.leftlogo{
+	float:left;
+	display: block;
+   	width: 355px;
+   	height: 42px;
+   	background:url("CivicTechUSC.png") no-repeat;
+	background-size:cover;
+   	text-indent: -9999px;
+}
+
+#usc-branding div.nav{
+	float:right;
+	display: block;
+    margin-top:0.7em;
+    font-size:18px;
+   	/* width: 185px;
+	height: 66px;
+   	/* background:url("images/USCUniversitySouthernCalifornia.png") no-repeat;
+   	/* text-indent: -9999px; */
+}        
+    
+#usc-branding div.nav a {
+    padding: 0 18px;
+}
+
+@media only screen and (max-width: 600px){
+	  
+}
+    
+</style>
+</head>
+<body>
+
+<div id="usc-branding">
+	<div class="container">
+		<a class="leftlogo" href="#">Civic Tech USC</a>
+        <div class="nav"><a href="#">Home</a> <a href="#">About</a> <a href="#">Projects</a></div>
+	</div>
+</div>
+
+<div id='map'></div>
+
+<div class="container">
+    <div class="report">
+    <h1>Opening Government Data in Los Angeles County</h1>
+
+    <button>Download the Report</button>
+    </div>
+    
+    <div class="signup">
+        
+        <form action="#" method="post" name="sign up for beta form">    
+         <h2>Get the Latest Updates</h2>    
+      <div class="description">
+        <p>If you're interested in Civic Tech USC, please let us know by signing up for our upcoming newsletter:</p>
+      </div>
+      <div class="input">
+        <input type="text" class="button" id="email" name="email" placeholder="NAME@EXAMPLE.COM">
+        <input type="submit" class="button" id="submit" value="SIGN UP">
+      </div>
+    </form>                
+    </div>
+</div>  
+   
+    <div class="aboutsection">    
+        <div class="containercenter">
+        <h2>About Civic Tech USC</h2>
+      <p>Civic Tech USC is an academic research laboratory created to explore how technology is transforming citizenship, government, and the information ecosystem.</p>
+       <br/>   
+        <h2>About the Center on Communication Leadership &amp; Policy</h2>
+        <p>Guided by Ambassador Walter Annenberg’s belief that communication impacts all aspects of society and should be used in the public interest, the <a href="http://communicationleadership.usc.edu/">Center on Communication Leadership &amp; Policy (CCLP)</a> unites visionary ideals with impactful scholarship and practical applications that promote innovative solutions to policy and social concerns. Based at the Annenberg School for Communication and Journalism at the University of Southern California, CCLP is a policy center that conducts and disseminates research, organizes courses and fosters dialogue through programs, seminars, and symposia for scholars, students, policymakers, and working professionals.</p>
+        </div>
+    </div>
+<!-- jQuery is required for this example. -->
+<script src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
+<script src="mapboxtest4.js"></script>
+</body>
+</html>
