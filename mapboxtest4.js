@@ -79,7 +79,7 @@ var cities = "lacities.geojson";
         
         //Styles and loads the Hubs
         $.getJSON(cities, function(data) {
-        var citiesLayer = L.geoJson(citiesData,  {
+        var citiesLayer = L.geoJson(data,  {
       style: getStyle,
       onEachFeature: onEachFeature
   }).addTo(map);
