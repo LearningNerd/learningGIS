@@ -1,6 +1,7 @@
 // https://www.mapbox.com/mapbox.js/example/v1.0.0/choropleth/
 // https://www.mapbox.com/mapbox.js/example/v1.0.0/choropleth-joined-data-multiple-variables/
 
+var citiesLayer;
 
 L.mapbox.accessToken = 'pk.eyJ1IjoibGVhcm5pbmduZXJkIiwiYSI6ImM0YzYyYjU3MTI5NmU0ZGIwOTg5NDMyMWJkYmIyNmQ1In0.0A7HsPEzc91rDR0rGRz33w';
 
@@ -79,7 +80,7 @@ var cities = "lacities.geojson";
         
         //Styles and loads the Hubs
         $.getJSON(cities, function(data) {
-        var citiesLayer = L.geoJson(data,  {
+        citiesLayer = L.geoJson(data,  {
       style: getStyle,
       onEachFeature: onEachFeature
   }).addTo(map);
