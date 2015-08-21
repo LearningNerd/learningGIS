@@ -11,6 +11,17 @@ var map = L.mapbox.map('map', 'learningnerd.n6ibmhde')
 var popup = new L.Popup({ autoPan: false });
 
 
+var cities = "lacities.geojson";
+        
+        //Styles and loads the Hubs
+        $.getJSON(cities, function(data) {
+        citiesLayer = L.geoJson(data,  {
+      style: getStyle,
+      onEachFeature: onEachFeature
+  }).addTo(map);
+        });
+
+
   function getStyle(feature) {
       return {
           weight: 2,
@@ -23,11 +34,11 @@ var popup = new L.Popup({ autoPan: false });
 
 // get color depending on population density value
   function getColor(d) {
-      return d === 1 ? '#88c300' : '#d97b7b';
+      return d === 1 ? '#FFCC00' : '#999';
   }
 
 function getLineColor(d) {
-      return d === 1 ? '#415c03' : '#7c3333';
+      return d === 1 ? '#524100' : '#000';
   }
 
 var closeTooltip;
@@ -76,20 +87,10 @@ var closeTooltip;
       });
   }  
 
-var cities = "lacities.geojson";
-        
-        //Styles and loads the Hubs
-        $.getJSON(cities, function(data) {
-        citiesLayer = L.geoJson(data,  {
-      style: getStyle,
-      onEachFeature: onEachFeature
-  }).addTo(map);
-        });
-
 
 map.legendControl.addLegend(getLegendHTML());
 
   function getLegendHTML() {    
-    return '<h2>Open data portals in LA County</h2><ul><li><span class="swatch" style="background:#88c300"></span> Cities with portals</li><li><span class="swatch" style="background:#d97b7b"></span> Cities without portals</li></ul>';
+    return '<h2>Open data portals in LA County</h2><ul><li><span class="swatch" style="background:#FFCC00"></span> Cities with portals</li><li><span class="swatch" style="background:#999"></span> Cities without portals</li></ul>';
   }
 
